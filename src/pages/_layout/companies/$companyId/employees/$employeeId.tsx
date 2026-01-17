@@ -407,7 +407,7 @@ const WorkBookTab: FC<{ employeeId: string }> = ({ employeeId }) => {
 	]
 
 	return (
-		<Space direction={"vertical"} size={"large"} style={{ width: "100%" }}>
+		<Space orientation={"vertical"} size={"large"} style={{ width: "100%" }}>
 			{currentRecord && (
 				<div>
 					<Typography.Title level={5} style={{ marginBottom: 16 }}>
@@ -444,10 +444,10 @@ const WorkBookTab: FC<{ employeeId: string }> = ({ employeeId }) => {
 				<Typography.Title level={5} style={{ marginBottom: 16 }}>
 					{"Сведения о заработной плате"}
 				</Typography.Title>
-				<Space direction={"vertical"} size={"middle"} style={{ width: "100%" }}>
+				<Space orientation={"vertical"} size={"middle"} style={{ width: "100%" }}>
 					{years.map((year) => (
 						<Card key={year} size={"small"}>
-							<Space direction={"vertical"} size={"small"} style={{ width: "100%" }}>
+							<Space orientation={"vertical"} size={"small"} style={{ width: "100%" }}>
 								<Typography.Text strong={true} style={{ fontSize: 16 }}>
 									{year}
 								</Typography.Text>
