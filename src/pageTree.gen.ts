@@ -14,7 +14,8 @@ import { Route as LayoutRouteImport } from "./pages/_layout"
 import { Route as AuthRouteImport } from "./pages/_auth"
 import { Route as MainLayoutIndexRouteImport } from "./pages/_main-layout/index"
 import { Route as AuthLoginRouteImport } from "./pages/_auth/login"
-import { Route as LayoutOrgOrgIdIndexRouteImport } from "./pages/_layout/org/$orgId/index"
+import { Route as LayoutCompaniesCompanyIdIndexRouteImport } from "./pages/_layout/companies/$companyId/index"
+import { Route as LayoutCompaniesCompanyIdEmployeesEmployeeIdRouteImport } from "./pages/_layout/companies/$companyId/employees/$employeeId"
 
 const MainLayoutRoute = MainLayoutRouteImport.update({
   id: "/_main-layout",
@@ -38,21 +39,30 @@ const AuthLoginRoute = AuthLoginRouteImport.update({
   path: "/login",
   getParentRoute: () => AuthRoute,
 } as any)
-const LayoutOrgOrgIdIndexRoute = LayoutOrgOrgIdIndexRouteImport.update({
-  id: "/org/$orgId/",
-  path: "/org/$orgId/",
-  getParentRoute: () => LayoutRoute,
-} as any)
+const LayoutCompaniesCompanyIdIndexRoute =
+  LayoutCompaniesCompanyIdIndexRouteImport.update({
+    id: "/companies/$companyId/",
+    path: "/companies/$companyId/",
+    getParentRoute: () => LayoutRoute,
+  } as any)
+const LayoutCompaniesCompanyIdEmployeesEmployeeIdRoute =
+  LayoutCompaniesCompanyIdEmployeesEmployeeIdRouteImport.update({
+    id: "/companies/$companyId/employees/$employeeId",
+    path: "/companies/$companyId/employees/$employeeId",
+    getParentRoute: () => LayoutRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   "/login": typeof AuthLoginRoute
   "/": typeof MainLayoutIndexRoute
-  "/org/$orgId": typeof LayoutOrgOrgIdIndexRoute
+  "/companies/$companyId": typeof LayoutCompaniesCompanyIdIndexRoute
+  "/companies/$companyId/employees/$employeeId": typeof LayoutCompaniesCompanyIdEmployeesEmployeeIdRoute
 }
 export interface FileRoutesByTo {
   "/login": typeof AuthLoginRoute
   "/": typeof MainLayoutIndexRoute
-  "/org/$orgId": typeof LayoutOrgOrgIdIndexRoute
+  "/companies/$companyId": typeof LayoutCompaniesCompanyIdIndexRoute
+  "/companies/$companyId/employees/$employeeId": typeof LayoutCompaniesCompanyIdEmployeesEmployeeIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -61,13 +71,22 @@ export interface FileRoutesById {
   "/_main-layout": typeof MainLayoutRouteWithChildren
   "/_auth/login": typeof AuthLoginRoute
   "/_main-layout/": typeof MainLayoutIndexRoute
-  "/_layout/org/$orgId/": typeof LayoutOrgOrgIdIndexRoute
+  "/_layout/companies/$companyId/": typeof LayoutCompaniesCompanyIdIndexRoute
+  "/_layout/companies/$companyId/employees/$employeeId": typeof LayoutCompaniesCompanyIdEmployeesEmployeeIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: "/login" | "/" | "/org/$orgId"
+  fullPaths:
+    | "/login"
+    | "/"
+    | "/companies/$companyId"
+    | "/companies/$companyId/employees/$employeeId"
   fileRoutesByTo: FileRoutesByTo
-  to: "/login" | "/" | "/org/$orgId"
+  to:
+    | "/login"
+    | "/"
+    | "/companies/$companyId"
+    | "/companies/$companyId/employees/$employeeId"
   id:
     | "__root__"
     | "/_auth"
@@ -75,7 +94,8 @@ export interface FileRouteTypes {
     | "/_main-layout"
     | "/_auth/login"
     | "/_main-layout/"
-    | "/_layout/org/$orgId/"
+    | "/_layout/companies/$companyId/"
+    | "/_layout/companies/$companyId/employees/$employeeId"
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -121,11 +141,18 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof AuthLoginRouteImport
       parentRoute: typeof AuthRoute
     }
-    "/_layout/org/$orgId/": {
-      id: "/_layout/org/$orgId/"
-      path: "/org/$orgId"
-      fullPath: "/org/$orgId"
-      preLoaderRoute: typeof LayoutOrgOrgIdIndexRouteImport
+    "/_layout/companies/$companyId/": {
+      id: "/_layout/companies/$companyId/"
+      path: "/companies/$companyId"
+      fullPath: "/companies/$companyId"
+      preLoaderRoute: typeof LayoutCompaniesCompanyIdIndexRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    "/_layout/companies/$companyId/employees/$employeeId": {
+      id: "/_layout/companies/$companyId/employees/$employeeId"
+      path: "/companies/$companyId/employees/$employeeId"
+      fullPath: "/companies/$companyId/employees/$employeeId"
+      preLoaderRoute: typeof LayoutCompaniesCompanyIdEmployeesEmployeeIdRouteImport
       parentRoute: typeof LayoutRoute
     }
   }
@@ -142,11 +169,14 @@ const AuthRouteChildren: AuthRouteChildren = {
 const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
 
 interface LayoutRouteChildren {
-  LayoutOrgOrgIdIndexRoute: typeof LayoutOrgOrgIdIndexRoute
+  LayoutCompaniesCompanyIdIndexRoute: typeof LayoutCompaniesCompanyIdIndexRoute
+  LayoutCompaniesCompanyIdEmployeesEmployeeIdRoute: typeof LayoutCompaniesCompanyIdEmployeesEmployeeIdRoute
 }
 
 const LayoutRouteChildren: LayoutRouteChildren = {
-  LayoutOrgOrgIdIndexRoute: LayoutOrgOrgIdIndexRoute,
+  LayoutCompaniesCompanyIdIndexRoute: LayoutCompaniesCompanyIdIndexRoute,
+  LayoutCompaniesCompanyIdEmployeesEmployeeIdRoute:
+    LayoutCompaniesCompanyIdEmployeesEmployeeIdRoute,
 }
 
 const LayoutRouteWithChildren =
