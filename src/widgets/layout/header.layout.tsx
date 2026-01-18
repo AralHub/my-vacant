@@ -3,7 +3,6 @@ import {
 	LogoutOutlined,
 	MailOutlined,
 	MenuOutlined,
-	MoonOutlined,
 	SearchOutlined,
 	UserOutlined,
 } from "@ant-design/icons"
@@ -22,6 +21,7 @@ import {
 	Typography,
 } from "antd"
 import { type FC } from "react"
+import { ThemeButton } from "src/widgets/actions"
 import { Logo } from "src/widgets/shared"
 
 interface HeaderLayoutProps {
@@ -77,13 +77,7 @@ const HeaderLayout: FC<HeaderLayoutProps> = ({ main }) => {
 						/>
 					</Space>
 					<Space>
-						<Button
-							variant={"filled"}
-							color={"default"}
-							shape={"circle"}
-							icon={<MoonOutlined />}
-							size={"large"}
-						/>
+						<ThemeButton />
 						<Select
 							placeholder={"Language"}
 							variant={"filled"}

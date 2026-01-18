@@ -10,7 +10,7 @@ const Logo: FC<LogoProps> = ({ collapsed, ...props }) => {
 		<>
 			<Flex
 				gap={8}
-				align={"baseline"}
+				align={"center"}
 				{...props}
 			>
 				<Image
