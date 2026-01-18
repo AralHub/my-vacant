@@ -53,6 +53,9 @@ const AntdProvider: FC<PropsWithChildren> = ({ children }) => {
 						borderInlineEnd: 0,
 					},
 				}}
+				card={{
+					variant: "borderless"
+				}}
 			>
 				{children}
 			</ConfigProvider>

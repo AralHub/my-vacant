@@ -18,8 +18,7 @@ const SidebarLayout: FC = () => {
 					style={{
 						padding: token.padding,
 						height: 72,
-						borderBottom: `1px solid ${token.colorBgLayout}`,
-						borderInlineEnd: `1px solid ${token.colorBgLayout}`,
+						borderBottom: `1px solid ${token.colorBorder}`,
 					}}
 				>
 					<Link to={"/"}>

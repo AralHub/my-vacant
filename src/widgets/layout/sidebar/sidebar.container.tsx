@@ -11,6 +11,7 @@ const SidebarContainer: FC<PropsWithChildren> = ({ children }) => {
 				theme={"light"}
 				style={{
 					boxShadow: token.boxShadowTertiary,
+					borderInlineEnd: `1px solid ${token.colorBorder}`,
 					height: "100vh",
 					position: "sticky",
 					top: 0,
