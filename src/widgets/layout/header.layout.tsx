@@ -2,7 +2,6 @@ import {
 	BellOutlined,
 	LogoutOutlined,
 	MailOutlined,
-	MenuOutlined,
 	SearchOutlined,
 	UserOutlined,
 } from "@ant-design/icons"
@@ -21,7 +20,7 @@ import {
 	Typography,
 } from "antd"
 import { type FC } from "react"
-import { ThemeButton } from "src/widgets/actions"
+import { MenuButton, ThemeButton } from "src/widgets/actions"
 import { Logo } from "src/widgets/shared"
 
 interface HeaderLayoutProps {
@@ -58,14 +57,7 @@ const HeaderLayout: FC<HeaderLayoutProps> = ({ main }) => {
 					{main ? <Logo align={"center"} /> : null}
 
 					<Space>
-						{main ? null : (
-							<Button
-								type={"text"}
-								shape={"circle"}
-								icon={<MenuOutlined />}
-								size={"large"}
-							/>
-						)}
+						{main ? null : <MenuButton />}
 						<Input
 							prefix={<SearchOutlined />}
 							placeholder={"Search..."}

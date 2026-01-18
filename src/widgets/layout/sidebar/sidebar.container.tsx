@@ -1,13 +1,16 @@
 import { Layout, theme } from "antd"
 import { type FC, type PropsWithChildren } from "react"
+import { useMenuStore } from "src/shared/store"
 
 const SidebarContainer: FC<PropsWithChildren> = ({ children }) => {
 	const { token } = theme.useToken()
+	const collapsed = useMenuStore(state => state.collapsed)
 
 	return (
 		<>
 			<Layout.Sider
 				width={256}
+				collapsed={collapsed}
 				theme={"light"}
 				style={{
 					boxShadow: token.boxShadowTertiary,

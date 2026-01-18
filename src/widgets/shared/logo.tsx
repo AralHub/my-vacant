@@ -11,6 +11,11 @@ const Logo: FC<LogoProps> = ({ collapsed, ...props }) => {
 			<Flex
 				gap={8}
 				align={"center"}
+				style={{
+					whiteSpace: "nowrap",
+					minWidth: 40,
+					flexShrink: 0,
+				}}
 				{...props}
 			>
 				<Image
@@ -18,6 +23,10 @@ const Logo: FC<LogoProps> = ({ collapsed, ...props }) => {
 					fallback={"/public/react.svg"}
 					width={40}
 					height={40}
+					style={{
+						flexShrink: 0,
+						minWidth: 40,
+					}}
 					preview={false}
 				/>
 				<Typography.Title
